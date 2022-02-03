@@ -2,14 +2,14 @@ package lab1;
 
 import java.util.Random;
 
-public class HugeInteger {
+public class HugeIntegerP2 {
 
 	private int[] bigArray = null;
 	private int intLength;
 	public static final char NEGSIGN = '-';
 	boolean isPos = true;
 
-	public HugeInteger(String val) {
+	public HugeIntegerP2(String val) {
 
 		// input error checking
 		if (val == null || val.length() == 0) { // input must contain 1 or more characters
@@ -45,7 +45,7 @@ public class HugeInteger {
 		}
 	}
 
-	public HugeInteger(int n) {
+	public HugeIntegerP2(int n) {
 
 		this.intLength = n;
 		this.bigArray = new int[intLength];
@@ -62,7 +62,7 @@ public class HugeInteger {
 
 	}
 
-	public HugeInteger add(HugeInteger h) {
+	public HugeIntegerP2 add(HugeIntegerP2 h) {
 
 		String addNums = ""; // stores the result of the addition
 
@@ -92,7 +92,7 @@ public class HugeInteger {
 			}
 		}
 
-		HugeInteger sum = new HugeInteger(addNums);
+		HugeIntegerP2 sum = new HugeIntegerP2(addNums);
 
 		return sum;
 
@@ -133,7 +133,7 @@ public class HugeInteger {
 		return result;
 	}
 
-	public HugeInteger subtract(HugeInteger h) {
+	public HugeIntegerP2 subtract(HugeIntegerP2 h) {
 
 		String result = "";
 
@@ -160,12 +160,12 @@ public class HugeInteger {
 			}
 		}
 
-		HugeInteger sub = new HugeInteger(result);
+		HugeIntegerP2 sub = new HugeIntegerP2(result);
 		return sub;
 
 	}
 
-	private String subtractArrays(HugeInteger h1, HugeInteger h2) {
+	private String subtractArrays(HugeIntegerP2 h1, HugeIntegerP2 h2) {
 		// assuming abs val h1 is larger than abs val of h2
 		int subtraction = 0;
 		String result = "";
@@ -212,7 +212,7 @@ public class HugeInteger {
 		}
 	}
 
-	public HugeInteger multiply(HugeInteger h) {
+	public HugeIntegerP2 multiply(HugeIntegerP2 h) {
 
 		int magnitude = this.compareAbsVal(h);
 		String result = ""; // update this to later be multiplyArrays(x,y)
@@ -235,7 +235,7 @@ public class HugeInteger {
 			}
 		}
 
-		HugeInteger product = new HugeInteger(result);
+		HugeIntegerP2 product = new HugeIntegerP2(result);
 		return product;
 	}
 
@@ -243,7 +243,7 @@ public class HugeInteger {
 		int digitProd = 0;
 		String addZeros = ""; // for adding placeholder zeros
 		int bottomIndex = bottom.length - 1;
-		HugeInteger tally = new HugeInteger("0");
+		HugeIntegerP2 tally = new HugeIntegerP2("0");
 
 		while (bottomIndex >= 0) { // until bottom has run out of digits to multiply w each digit of top
 			int topIndex = top.length - 1;
@@ -264,7 +264,7 @@ public class HugeInteger {
 			if (carry != 0) {
 				partialResult = carry + partialResult;
 			}
-			HugeInteger partialInput = new HugeInteger(partialResult);
+			HugeIntegerP2 partialInput = new HugeIntegerP2(partialResult);
 			tally = tally.add(partialInput);
 			bottomIndex--;
 			addZeros += "0"; // update the number of zeros for the next iteration
@@ -274,7 +274,7 @@ public class HugeInteger {
 
 	}
 
-	public int compareTo(HugeInteger h) {
+	public int compareTo(HugeIntegerP2 h) {
 
 		// cases that can be eliminated immediately
 		if (this.isPos && !h.isPos) {
@@ -296,7 +296,7 @@ public class HugeInteger {
 		return magnitude;
 	}
 
-	private int compareAbsVal(HugeInteger h) {
+	private int compareAbsVal(HugeIntegerP2 h) {
 
 		if (this.intLength > h.intLength) {
 			return 1;
